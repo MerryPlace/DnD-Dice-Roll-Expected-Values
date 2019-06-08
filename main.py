@@ -28,18 +28,26 @@ def adv_roll(num, sides):
 
 def dice_parse(dice):
   for x in dice:
-    nums = x.split("d")
-    front = nums[0]
-    back = int(nums[1])
+    halves = x.split("d")
+    front = halves[0] #first half (becomes number of dice)
+    faces = int(halves[1]) #number of faces on dice
+    first = front[0] #first char, to check for adv/dis
 
-    if(front[0] == '-'):
+    if(first== '-' or first== '+'):
       front = front.replace('-', '')
-      dis_roll(int(front), back)
-    elif(front[0] == '+'):
       front = front.replace('+', '')
-      adv_roll(int(front), back)
+
+    num = int(front) #number of dice
+
+    if(num > 0 and faces > 0):
+      if(first == '-'): #if disadvantage
+        dis_roll(num, faces)
+      elif(first == '+'): #if advantage
+        adv_roll(num, faces)
+      else:
+        norm_roll(num, faces)
     else:
-      norm_roll(int(front), back)
+      print("Numbers must be positive. You can't roll negative sided dice!")
 
 
 
