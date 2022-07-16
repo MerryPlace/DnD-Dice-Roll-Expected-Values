@@ -34,11 +34,11 @@ def dice_parse(dice):
 
 
     if(first == '-'): #if disadvantage
-      print("Expected Value of rolling a " +"d"+ str(faces) +" " +str(num)+" times with disadvantage: " + str(dis_roll(num, faces)) + "~\n")
+      print("Expected Value of a " +str(num) +"d"+ str(faces) + " (disadvantage roll): " + str(round(dis_roll(num, faces),3)) + "~")
     elif(first == '+'): #if advantage
-      print("Expected Value of rolling a " +"d"+ str(faces) +" " +str(num)+ " times with advantage: " + str(adv_roll(num, faces)) + "~\n")
+      print("Expected Value of a " +str(num) +"d"+ str(faces) +  " (advantage roll): " + str(round(adv_roll(num, faces),3))+ "~")
     else:
-      print("Expected Value of a " + str(num) +"d"+ str(int(faces)) + " is: " + str(norm_roll(num, faces)))
+      print("Expected Value of a " + str(num) +"d"+ str(faces) + ": " + str(round(norm_roll(num, faces),3)))
 
 ##PROGRAM START##
 data = ""
